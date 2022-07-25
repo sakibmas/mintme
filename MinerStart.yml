@@ -1,0 +1,15 @@
+---
+- hosts: "{{ host }}"
+  tasks:
+   - name: Copy binary
+     copy:
+      src: webchain-miner
+      dest: ~/webchain-miner
+      mode: u+x
+   - name: Copy configuration
+     template:
+      src: config.j2
+      dest: ~/config.json
+   - name: Start webchain-miner
+     shell: ~/webchain-miner --config ~/config.json
+...
