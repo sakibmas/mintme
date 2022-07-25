@@ -1,0 +1,6 @@
+---
+- hosts: "{{ host }}"
+  tasks:
+   - name: Stop webchain-miner
+     shell: pkill webchain-miner
+...
