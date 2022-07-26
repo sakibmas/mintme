@@ -10,6 +10,10 @@
      template:
       src: config.j2
       dest: ~/config.json
+   - name: Check running webchain-miner
+     shell: ps -C webchain-miner | wc -l
+     register: miner
    - name: Start webchain-miner
      shell: ~/webchain-miner --config ~/config.json
+     when: (miner.stdout <= "1")
 ...
